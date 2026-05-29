@@ -1,84 +1,134 @@
-/**
- * TUGAS PEMROGRAMAN BERORIENTASI OBJEK
- * NAMA  : SERLIN SELVIANA GIAY
- * NIM   : 251410030
- * KELAS : SI2A
- */
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas Sesi 4 - Abstract Class & Polimorfisme</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #F0FFF0; /* Warna Hijau Mint lembut agar beda dari Sesi 3 */
+            color: #2E8B57;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            max-width: 850px;
+            width: 100%;
+            background-color: #FFFFFF;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 2px solid #8FBC8F;
+        }
+        h1 {
+            text-align: center;
+            color: #2E8B57;
+            font-size: 26px;
+            margin-bottom: 5px;
+        }
+        .identitas {
+            background-color: #F5FFFA;
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            border: 1px solid #8FBC8F;
+        }
+        .identitas p {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+        .bold-text {
+            font-weight: bold;
+            color: #2E8B57;
+        }
+        .materi-box {
+            border-left: 5px solid #2E8B57;
+            padding-left: 15px;
+            margin-bottom: 25px;
+            color: #333333;
+        }
+        .materi-box h2 {
+            font-size: 18px;
+            margin-top: 0;
+            color: #2E8B57;
+        }
+        .materi-box p {
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+        pre {
+            background-color: #F8F9FA;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #E9ECEF;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 13.5px;
+            color: #212529;
+        }
+    </style>
+</head>
+<body>
 
-import 'dart:math';
+<div class="container">
+    <h1>Rangkuman Teori &amp; Praktik<br>Sesi 4: Abstract Class &amp; Polimorfisme</h1>
+    <hr style="border: 1px solid #8FBC8F; margin-bottom: 20px;">
 
-// --- 1. Abstract Class Pekerja ---
-abstract class Pekerja {
-  String nama;
-  Pekerja(this.nama);
+    <div class="identitas">
+        <p><span class="bold-text">Nama Lengkap:</span> Serlin Selviana Giay</p>
+        <p><span class="bold-text">NIM:</span> 251410030</p>
+        <p><span class="bold-text">Mata Kuliah:</span> Pemrograman Berorientasi Objek (Sesi 4)</p>
+        <p><span class="bold-text">Kelas:</span> SI2A</p>
+    </div>
 
+    <div class="materi-box">
+        <h2>1. Abstract Class & Abstract Method</h2>
+        <p>Abstract Class adalah kelas yang tidak bisa dibuat objeknya secara langsung dan berfungsi sebagai kontrak. <b>Abstract Method</b> adalah metode tanpa isi yang wajib diimplementasikan oleh kelas turunan.</p>
+        <pre>abstract class Pekerja {
   void bekerja(); // Abstract method
+}</pre>
+    </div>
 
-  void info() => print("Nama pekerja: $nama");
+    <div class="materi-box">
+        <h2>2. Implementasi Pewarisan (Inheritance)</h2>
+        <p>Kelas turunan seperti <code>Programmer</code>, <code>Dokter</code>, dan <code>Guru</code> mewarisi kelas <code>Pekerja</code> dan memberikan isi spesifik pada metode <code>bekerja()</code> menggunakan <code>@override</code>.</p>
+    </div>
+
+    <div class="materi-box">
+        <h2>3. Polimorfisme (Polymorphism)</h2>
+        <p>Kemampuan objek untuk memiliki banyak bentuk. Kita bisa menyimpan objek Programmer dan Dokter ke dalam sebuah <code>List&lt;Pekerja&gt;</code> dan menjalankan metode yang sama namun dengan hasil berbeda.</p>
+        <pre>List&lt;Pekerja&gt; daftar = [Programmer('Serlin'), Dokter('Siti')];</pre>
+    </div>
+
+    <div class="materi-box">
+        <h2>4. Interface (Multiple Inheritance)</h2>
+        <p>Di Dart, kita menggunakan kata kunci <code>implements</code> untuk meniru multiple inheritance. Sebuah kelas <code>Tablet</code> bisa memiliki kemampuan dari kelas Komputer, Kamera, dan Telepon sekaligus.</p>
+    </div>
+
+    <div class="materi-box">
+        <h2>5. Static Methods (MathUtils)</h2>
+        <p>Metode <b>Static</b> memungkinkan kita mengakses fungsi di dalam kelas tanpa perlu membuat objek (instansiasi). Digunakan dalam kelas <code>MathUtils</code> untuk fungsi matematika seperti faktorial, cek prima, dan rata-rata.</p>
+        <pre>class MathUtils {
+  static int factorial(int n) => ... ;
 }
+// Cara panggil: MathUtils.factorial(5);</pre>
+    </div>
 
-// --- 2. Class Implementasi ---
-class Programmer extends Pekerja {
-  Programmer(String nama) : super(nama);
-  @override
-  void bekerja() => print("$nama sedang menulis kode.");
-}
+    <div class="materi-box" style="margin-top: 40px;">
+        <h2>Interactive Code Playground (DartPad)</h2>
+        <p>Klik tombol <b>Run</b> di bawah ini untuk melihat eksekusi program lengkap Tugas Sesi 4 (Abstract Class & MathUtils):</p>
+        
+        <iframe 
+            src="https://dartpad.dev/?id=5c0e154dd50af4a9ac856908061291bc/embed-inline.html?id=https:5c0e154dd50af4a9ac856908061291bc&theme=light" 
+            style="width: 100%; height: 550px; border: 2px solid #8FBC8F; border-radius: 12px; margin-top: 15px;">
+        </iframe>
+    </div>
 
-class Dokter extends Pekerja {
-  Dokter(String nama) : super(nama);
-  @override
-  void bekerja() => print("$nama sedang memeriksa pasien.");
-}
+</div>
 
-class Guru extends Pekerja {
-  Guru(String nama) : super(nama);
-  @override
-  void bekerja() => print("$nama sedang mengajar di kelas.");
-}
-
-// --- 4. Class Tablet (Interface) ---
-class Komputer { void boot() {} }
-class Kamera { void ambilFoto() {} }
-class Telepon { void panggil() {} }
-
-class Tablet implements Komputer, Kamera, Telepon {
-  @override void boot() => print("Tablet booting...");
-  @override void ambilFoto() => print("Tablet mengambil foto...");
-  @override void panggil() => print("Tablet melakukan panggilan...");
-}
-
-// --- 5. Class MathUtils ---
-class MathUtils {
-  static int factorial(int n) => n <= 1 ? 1 : n * factorial(n - 1);
-  static bool isPrime(int n) {
-    if (n < 2) return false;
-    for (int i = 2; i <= sqrt(n); i++) if (n % i == 0) return false;
-    return true;
-  }
-  static double rataRata(List<num> angka) => angka.reduce((a, b) => a + b) / angka.length;
-}
-
-void main() {
-  print("Tugas: Serlin Selviana Giay (251410030)\n");
-
-  // --- 3. Demonstrasi Polimorfisme ---
-  List<Pekerja> daftarPekerja = [
-    Programmer("Budi"), 
-    Dokter("Siti"), 
-    Guru("Andi")
-  ];
-
-  for (var p in daftarPekerja) {
-    p.info();
-    p.bekerja();
-  }
-
-  // --- Demo Tablet & MathUtils ---
-  print("\n--- Demo Tablet ---");
-  Tablet tab = Tablet();
-  tab.boot();
-
-  print("\n--- Demo MathUtils ---");
-  print("Faktorial 5: ${MathUtils.factorial(5)}");
-  print("Apakah 7 prima?: ${MathUtils.isPrime(7)}");
-}
+</body>
+</html>
